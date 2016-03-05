@@ -47,6 +47,11 @@ function parseItem (item) {
     }
   }
 
+  // Legacy rings have agony infusion on them even if it has an agony infusion inserted
+  if (item.rarity === 'Ascended' && details.type === 'Ring') {
+    delete attributes.AgonyResistance
+  }
+
   return attributes
 }
 

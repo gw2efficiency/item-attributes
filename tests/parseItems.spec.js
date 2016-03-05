@@ -221,6 +221,30 @@ describe('parsing items', () => {
     })
   })
 
+  it('can parse legacy ascended trinkets', () => {
+    let item = {
+      id: 75669,
+      name: 'Eingestimmter Ring des roten Todes (Infundiert)',
+      rarity: 'Ascended',
+      details: {
+        type: 'Ring',
+        infix_upgrade: {
+          buff: {
+            skill_id: 15755,
+            description: '+32 Kraft\n+18 Wildheit\n+18 Präzision\n+5 Qual-Widerstand'
+          },
+          attributes: [
+            {attribute: 'Power', modifier: 94},
+            {attribute: 'Precision', modifier: 67},
+            {attribute: 'CritDamage', modifier: 67}
+          ]
+        }
+      }
+    }
+
+    expect(parse(item)).to.deep.equal({Power: 126, Precision: 85, Ferocity: 85})
+  })
+
   it('can parse backpacks', () => {
     let item = {
       name: 'Fiber Splice',
