@@ -23,6 +23,32 @@ don't be shocked at the dependency tree. :wink:)
 
 ```js
 // TODO
+
+// Result: A (somewhat) sane object of attributes
+let attributes = {
+  Power: 865,
+  Toughness: 357,
+  Vitality: 569,
+  Precision: 123,
+  Ferocity: 485,
+  Armor: 70,
+  ConditionDamage: 200,
+  ConditionDuration: 0.5, // percentage
+  HealingPower: 100,
+  BoonDuration: 0.7, // percentage
+  AgonyResistance: 150,
+  Concentration: 120
+  Expertise: 140
+}
+
+// You can use this result to calculate the total values of a character
+// using the TODO method. This calculates:
+// - Toughness => Armor
+// - Precision => CritChance (percentage)
+// - Vitality => Health
+// - Ferocity => CritDamage (percentage)
+// - Expertise => ConditionDuration (percentage)
+// - Concentration => BoonDuration (percentage)
 ```
 
 ## Tests
