@@ -15,7 +15,8 @@ describe('parsing attributes from strings', () => {
     Toughness: 100,
     Vitality: 100,
     Concentration: 100,
-    Expertise: 100
+    Expertise: 100,
+    CritChance: 20
   }
 
   it('can parse english strings', () => {
@@ -32,6 +33,7 @@ describe('parsing attributes from strings', () => {
                   +95 Agony Resistance
                   +100 Concentration
                   +100 Expertise
+                  +20% Critical Chance
                   +5 to All Stats`
     expect(parseString(string)).to.deep.equal(expectedAttributes)
   })
@@ -51,6 +53,7 @@ describe('parsing attributes from strings', () => {
                   +95 Qual-Widerstand
                   +100 Konzentration
                   +100 Fachkenntnis
+                  +20% kritische Trefferchance
                   +5 auf alle Werte`
     expect(parseString(string)).to.deep.equal(expectedAttributes)
   })
@@ -69,6 +72,7 @@ describe('parsing attributes from strings', () => {
                   Résistance à l'agonie +95
                   Concentration +100
                   Expertise +100
+                  Chance de coup critique +20%
                   Toutes les statistiques +5`
     expect(parseString(string)).to.deep.equal(expectedAttributes)
   })
@@ -81,12 +85,13 @@ describe('parsing attributes from strings', () => {
                   +95 Precisión
                   +95 Ferocidad
                   +95 Daño de Condición
-                  +95% Duración de condición
+                  +95 % Duración de condición
                   +95 Poder de Curación
-                  +95% Duración de la Bendición
+                  +95 % Duración de la Bendición
                   +95 Resistencia a la Agonía
                   +100 Concentración
                   +100 Pericia
+                  +20 % Probabilidad de daño crítico
                   +5 a todas las estadísticas`
     expect(parseString(string)).to.deep.equal(expectedAttributes)
   })

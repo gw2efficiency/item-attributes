@@ -11,6 +11,7 @@ const attributeStrings = {
   AgonyResistance: ['Agony Resistance', 'Qual-Widerstand', 'Résistance à l\'agonie', 'Resistencia a la Agonía'],
   Concentration: ['Concentration', 'Konzentration', 'Concentration', 'Concentración'],
   Expertise: ['Expertise', 'Fachkenntnis', 'Expertise', 'Pericia'],
+  CritChance: ['Critical Chance', 'kritische Trefferchance', 'Chance de coup critique', 'Probabilidad de daño crítico'],
   __AllStats__: ['to All Stats', 'auf alle Werte', 'Toutes les statistiques', 'a todas las estadísticas']
 }
 
@@ -20,7 +21,7 @@ const allStatsAttributes = ['Power', 'Toughness', 'Vitality', 'Precision', 'Fero
 // all possible languages and formats (number & text / text & number / percent signs / ...)
 let attributeExpressions = {}
 for (let key in attributeStrings) {
-  let regexString = '(?:\\+?([\\d]*)%? )?(?:' + attributeStrings[key].join('|') + ')(?: \\+?([\\d]*)%?)?'
+  let regexString = '(?:\\+?([\\d]*) ?%? )?(?:' + attributeStrings[key].join('|') + ')(?: \\+? ?([\\d]*) ?%?)?'
   attributeExpressions[key] = new RegExp(regexString, 'gi')
 }
 
