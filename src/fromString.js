@@ -3,16 +3,18 @@ const attributeStrings = {
   Toughness: ['Toughness', 'Zähigkeit', 'Robustesse', 'Dureza'],
   Vitality: ['Vitality', 'Vitalität', 'Vitalité', 'Vitalidad'],
   Precision: ['Precision', 'Präzision', 'Précision', 'Precisión'],
-  CritDamage: ['Ferocity', 'Wildheit', 'Férocité', 'Ferocidad'],
+  Ferocity: ['Ferocity', 'Wildheit', 'Férocité', 'Ferocidad'],
   ConditionDamage: ['Condition Damage', 'Zustandsschaden', 'Dégâts par altération', 'Daño de Condición'],
   ConditionDuration: ['Condition Duration', 'Zustandsdauer', 'Durée d\'altération', 'Duración de condición'],
-  Healing: ['Healing', 'Heilung', 'Heilkraft', 'Guérison', 'Poder de Curación'],
+  HealingPower: ['Healing', 'Heilung', 'Heilkraft', 'Guérison', 'Poder de Curación'],
   BoonDuration: ['Boon Duration', 'Segensdauer', 'Durée d\'avantage', 'Duración de la Bendición'],
   AgonyResistance: ['Agony Resistance', 'Qual-Widerstand', 'Résistance à l\'agonie', 'Resistencia a la Agonía'],
+  Concentration: ['Concentration', 'Konzentration', 'Concentration', 'Concentración'],
+  Expertise: ['Expertise', 'Fachkenntnis', 'Expertise', 'Pericia'],
   __AllStats__: ['to All Stats', 'auf alle Werte', 'Toutes les statistiques', 'a todas las estadísticas']
 }
 
-const allStatsAttributes = ['Power', 'Toughness', 'Vitality', 'Precision', 'CritDamage', 'ConditionDamage', 'Healing']
+const allStatsAttributes = ['Power', 'Toughness', 'Vitality', 'Precision', 'Ferocity', 'ConditionDamage', 'HealingPower']
 
 // Build regular expressions to match attributes out of strings. This monstrosity catches
 // all possible languages and formats (number & text / text & number / percent signs / ...)

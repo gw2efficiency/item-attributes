@@ -8,12 +8,14 @@ describe('parsing attribute from strings', () => {
     BoonDuration: 95,
     ConditionDamage: 100,
     ConditionDuration: 95,
-    CritDamage: 100,
-    Healing: 100,
+    Ferocity: 100,
+    HealingPower: 100,
     Power: 100,
     Precision: 100,
     Toughness: 100,
-    Vitality: 100
+    Vitality: 100,
+    Concentration: 100,
+    Expertise: 100
   }
 
   it('can parse english strings', () => {
@@ -28,6 +30,8 @@ describe('parsing attribute from strings', () => {
                   +95 Healing
                   +95% Boon Duration
                   +95 Agony Resistance
+                  +100 Concentration
+                  +100 Expertise
                   +5 to All Stats`
     expect(fromString(string)).to.deep.equal(expectedAttributes)
   })
@@ -45,6 +49,8 @@ describe('parsing attribute from strings', () => {
                   +50 Heilkraft
                   +95% Segensdauer
                   +95 Qual-Widerstand
+                  +100 Konzentration
+                  +100 Fachkenntnis
                   +5 auf alle Werte`
     expect(fromString(string)).to.deep.equal(expectedAttributes)
   })
@@ -61,6 +67,8 @@ describe('parsing attribute from strings', () => {
                   Guérison +95
                   Durée d'avantage +95%
                   Résistance à l'agonie +95
+                  Concentration +100
+                  Expertise +100
                   Toutes les statistiques +5`
     expect(fromString(string)).to.deep.equal(expectedAttributes)
   })
@@ -77,12 +85,14 @@ describe('parsing attribute from strings', () => {
                   +95 Poder de Curación
                   +95% Duración de la Bendición
                   +95 Resistencia a la Agonía
+                  +100 Concentración
+                  +100 Pericia
                   +5 a todas las estadísticas`
     expect(fromString(string)).to.deep.equal(expectedAttributes)
   })
 
   it('doesn\'t include non-existing attribute', () => {
-    let string = '+10 Precisión, +5% Duración de condición'
+    let string = '+10 Precisión, +10 Random Attribute, +5% Duración de condición'
     expect(fromString(string)).to.deep.equal({Precision: 10, ConditionDuration: 5})
   })
 })
