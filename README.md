@@ -21,34 +21,92 @@ don't be shocked at the dependency tree. :wink:)
 
 ## Usage
 
+### Parsing items
+
+You can parse the attributes of a single item or an array of items using the `parseItems` method.
+This method accepts weapons, armor, back items, trinkets and upgrades of any rarity. 
+
+The following attributes **can** be included in the object:
+
+- `Power`
+- `Toughness`
+- `Vitality`
+- `Precision`
+- `Ferocity`
+- `Armor`
+- `ConditionDamage`
+- `ConditionDuration` (percentage)
+- `HealingPower`
+- `BoonDuration` (percentage)
+- `AgonyResistance`
+- `Concentration`
+- `Expertise`
+
 ```js
-// TODO
+const attributeParsing = require('item-attribute-parsing')
 
-// Result: A (somewhat) sane object of attributes
-let attributes = {
-  Power: 865,
-  Toughness: 357,
-  Vitality: 569,
-  Precision: 123,
-  Ferocity: 485,
-  Armor: 70,
-  ConditionDamage: 200,
-  ConditionDuration: 0.5, // percentage
-  HealingPower: 100,
-  BoonDuration: 0.7, // percentage
-  AgonyResistance: 150,
-  Concentration: 120
-  Expertise: 140
-}
+let items = [
+  {
+    id: 38422,
+    name: 'Giver\'s Pearl Quarterstaff',
+    details: {
+      defense: 0,
+      infix_upgrade: {
+        buff: {skill_id: 25542, description: '+20% Condition Duration'},
+        attributes: [{attribute: 'Vitality', modifier: 171}, {attribute: 'Precision', modifier: 171}]
+      }
+    }
+  }  
+  // ...
+]
 
-// You can use this result to calculate the total values of a character
-// using the TODO method. This calculates:
-// - Toughness => Armor
-// - Precision => CritChance (percentage)
-// - Vitality => Health
-// - Ferocity => CritDamage (percentage)
-// - Expertise => ConditionDuration (percentage)
-// - Concentration => BoonDuration (percentage)
+let attributes = attributeParsing.parseItems(items)
+// -> {Vitality: 171, Precision: 171, ConditionDuration: 0.2}
+```
+
+### Parsing characters / secondary attributes
+
+You can additionally parse characters and secondary attributes using the `parseCharacter` method.
+This adds the base stats of a character at this level and additionally calculates:
+
+- `Armor` including `Toughness`
+- `CritChance` from `Precision` (percentage)
+- `Health` from `Vitality`
+- `CritDamage` from `Ferocity` (percentage)
+- `ConditionDuration` including `Expertise` (percentage)
+- `BoonDuration` including `Concentration` (percentage)
+
+Make sure that you pass in **all** equipped items of the character, including infusions and upgrades.
+For runes, pass in the rune as many times as it is equipped (e.g. 6 times for a full set)
+
+```js
+const attributeParsing = require('item-attribute-parsing')
+
+let level = 80
+// The profession as given from the API, one of Elementalist, Guardian, 
+// Thief, Engineer, Ranger, Mesmer, Revenant, Warrior or Necromancer
+let profession = 'Elementalist'
+let items = [/* ... */]
+
+let attributes = attributeParsing.parseCharacter(level, profession, items)
+// {
+//   Power: 123,
+//   Toughness: 123,
+//   Vitality: 123,
+//   Precision: 123,
+//   Ferocity: 123,
+//   Armor: 123,
+//   ConditionDamage: 123,
+//   ConditionDuration: 0.5,
+//   HealingPower: 123,
+//   BoonDuration: 0.5,
+//   AgonyResistance: 123,
+//   Concentration: 123,
+//   Expertise: 123,
+//   CritChance: 0.5,
+//   Health: 12345,
+//   CritDamage: 1.5
+// }
 ```
 
 ## Tests
