@@ -2,7 +2,7 @@
 const expect = require('chai').expect
 const parseString = require('../src/parseString.js')
 
-describe('parsing attribute from strings', () => {
+describe('parsing attributes from strings', () => {
   let expectedAttributes = {
     AgonyResistance: 95,
     BoonDuration: 95,
@@ -91,7 +91,7 @@ describe('parsing attribute from strings', () => {
     expect(parseString(string)).to.deep.equal(expectedAttributes)
   })
 
-  it('doesn\'t include non-existing attribute', () => {
+  it('doesn\'t include non-existing attributes', () => {
     let string = '+10 Precisión, +10 Random Attribute, +5% Duración de condición'
     expect(parseString(string)).to.deep.equal({Precision: 10, ConditionDuration: 5})
   })
