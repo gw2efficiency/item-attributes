@@ -5,7 +5,7 @@ function mergeAttributes (attributes, additionalAttributes) {
   return attributes
 }
 
-const percentageAttributes = ['ConditionDuration', 'BoonDuration']
+const percentageAttributes = ['ConditionDuration', 'BoonDuration', 'CritChance']
 function normalizeAttributes (attributes) {
   for (let key in attributes) {
     attributes[key] = percentageAttributes.indexOf(key) !== -1 ? attributes[key] / 100 : attributes[key]

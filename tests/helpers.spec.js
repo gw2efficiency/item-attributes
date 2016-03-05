@@ -9,7 +9,7 @@ describe('helpers', () => {
   })
 
   it('can normalize attributes', () => {
-    let result = helpers.normalizeAttributes({Foo: 1, Bar: 2, BoonDuration: 50, ConditionDuration: 40})
-    expect(result).to.deep.equal({Foo: 1, Bar: 2, BoonDuration: 0.5, ConditionDuration: 0.4})
+    let result = helpers.normalizeAttributes({Foo: 1, Bar: 2, BoonDuration: 50, ConditionDuration: 40, CritChance: 20})
+    expect(result).to.deep.equal({Foo: 1, Bar: 2, BoonDuration: 0.5, ConditionDuration: 0.4, CritChance: 0.2})
   })
 })
