@@ -63,13 +63,13 @@ describe('parsing items', () => {
       details: {
         defense: 0,
         infix_upgrade: {
-          buff: {skill_id: 25542, description: '+20% Condition Duration'},
+          buff: {skill_id: 25542, description: '+20% Condition Duration\n+15% Boon Duration'},
           attributes: [{attribute: 'Vitality', modifier: 171}, {attribute: 'Precision', modifier: 171}]
         }
       }
     }
 
-    expect(parse(item)).to.deep.equal({Vitality: 171, Precision: 171, ConditionDuration: 20})
+    expect(parse(item)).to.deep.equal({Vitality: 171, Precision: 171, ConditionDuration: 0.2, BoonDuration: 0.15})
   })
 
   it('can parse weapons', () => {
@@ -306,7 +306,7 @@ describe('parsing items', () => {
       }
     }
 
-    expect(parse(item)).to.deep.equal({ConditionDuration: 5})
+    expect(parse(item)).to.deep.equal({ConditionDuration: 0.05})
   })
 
   it('can parse runes', () => {

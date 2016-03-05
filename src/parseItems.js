@@ -1,4 +1,5 @@
 const parseString = require('./parseString.js')
+const {mergeAttributes, normalizeAttributes} = require('./helpers.js')
 
 // Counts how many of each rune we have while parsing items
 let runeCount
@@ -12,7 +13,7 @@ function parseItems (items) {
     attributes = mergeAttributes(attributes, parseItem(item))
   })
 
-  return attributes
+  return normalizeAttributes(attributes)
 }
 
 function parseItem (item) {
@@ -46,13 +47,6 @@ function parseItem (item) {
     }
   }
 
-  return attributes
-}
-
-function mergeAttributes (attributes, additionalAttributes) {
-  for (let key in additionalAttributes) {
-    attributes[key] = (attributes[key] || 0) + additionalAttributes[key]
-  }
   return attributes
 }
 
