@@ -21,7 +21,7 @@ const allStatsAttributes = ['Power', 'Toughness', 'Vitality', 'Precision', 'Fero
 // all possible languages and formats (number & text / text & number / percent signs / ...)
 let attributeExpressions = {}
 for (let key in attributeStrings) {
-  let regexString = '(?:\\+?([\\d]*) ?%? )?(?:' + attributeStrings[key].join('|') + ')(?: \\+? ?([\\d]*) ?%?)?'
+  let regexString = '(?:\\+ ?(\\d*) ?%? )?(?:' + attributeStrings[key].join('|') + ')(?: \\+ ?(\\d*) ?%?)?'
   attributeExpressions[key] = new RegExp(regexString, 'gi')
 }
 
