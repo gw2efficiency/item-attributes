@@ -26,7 +26,7 @@ for (let key in attributeStrings) {
 
 // Go through all the regular expressions matching the string
 // and build a (somewhat) sane object of attributes
-function parseFromString (string) {
+function parseString (string) {
   let attributes = {}
 
   for (let attribute in attributeExpressions) {
@@ -57,4 +57,4 @@ function matchAll (regex, string) {
   return matches
 }
 
-module.exports = parseFromString
+module.exports = parseString

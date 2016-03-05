@@ -1,6 +1,6 @@
 /* eslint-env node, mocha */
 const expect = require('chai').expect
-const fromString = require('../src/fromString.js')
+const parseString = require('../src/parseString.js')
 
 describe('parsing attribute from strings', () => {
   let expectedAttributes = {
@@ -33,7 +33,7 @@ describe('parsing attribute from strings', () => {
                   +100 Concentration
                   +100 Expertise
                   +5 to All Stats`
-    expect(fromString(string)).to.deep.equal(expectedAttributes)
+    expect(parseString(string)).to.deep.equal(expectedAttributes)
   })
 
   it('can parse german strings', () => {
@@ -52,7 +52,7 @@ describe('parsing attribute from strings', () => {
                   +100 Konzentration
                   +100 Fachkenntnis
                   +5 auf alle Werte`
-    expect(fromString(string)).to.deep.equal(expectedAttributes)
+    expect(parseString(string)).to.deep.equal(expectedAttributes)
   })
 
   it('can parse french strings', () => {
@@ -70,7 +70,7 @@ describe('parsing attribute from strings', () => {
                   Concentration +100
                   Expertise +100
                   Toutes les statistiques +5`
-    expect(fromString(string)).to.deep.equal(expectedAttributes)
+    expect(parseString(string)).to.deep.equal(expectedAttributes)
   })
 
   it('can parse spanish strings', () => {
@@ -88,11 +88,11 @@ describe('parsing attribute from strings', () => {
                   +100 Concentración
                   +100 Pericia
                   +5 a todas las estadísticas`
-    expect(fromString(string)).to.deep.equal(expectedAttributes)
+    expect(parseString(string)).to.deep.equal(expectedAttributes)
   })
 
   it('doesn\'t include non-existing attribute', () => {
     let string = '+10 Precisión, +10 Random Attribute, +5% Duración de condición'
-    expect(fromString(string)).to.deep.equal({Precision: 10, ConditionDuration: 5})
+    expect(parseString(string)).to.deep.equal({Precision: 10, ConditionDuration: 5})
   })
 })
