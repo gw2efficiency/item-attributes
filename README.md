@@ -1,11 +1,9 @@
-# item-attribute-parsing
+# gw2e-item-attributes
 
 [![Build Status](https://img.shields.io/travis/gw2efficiency/item-attribute-parsing.svg?style=flat-square)](https://travis-ci.org/gw2efficiency/item-attribute-parsing)
 [![Coverage Status](https://img.shields.io/codecov/c/github/gw2efficiency/item-attribute-parsing/master.svg?style=flat-square)](https://codecov.io/github/gw2efficiency/item-attribute-parsing)
 
-> Parse attributes of items from the official gw2 api
-
-**:bomb: NOTE: This module is still heavily in development and the API might change completely. Please don't use it yet.**
+> Parse attributes of items and characters from the official gw2 api
 
 ## Install
 
