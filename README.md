@@ -10,14 +10,10 @@
 ## Install
 
 ```
-npm install https://github.com/gw2efficiency/item-attribute-parsing
+npm install gw2e-item-attributes
 ```
 
 This module can be used for Node.js as well as browsers using [Browserify](https://github.com/substack/browserify-handbook#how-node_modules-works).
-
-(Note: Babel gets pulled in as a dependency, because the module is written in ES7 and 
-gets compiled into ES5 during the installation. The Babel code is **not** included in the module, 
-don't be shocked at the dependency tree. :wink:)
 
 ## Usage
 
@@ -43,7 +39,7 @@ The following attributes **can** be included in the object:
 - `Expertise`
 
 ```js
-const attributeParsing = require('item-attribute-parsing')
+const attributeParsing = require('gw2e-item-attributes')
 
 let items = [
   {
@@ -80,7 +76,7 @@ Make sure that you pass in **all** equipped items of the character, including in
 For runes, pass in the rune as many times as it is equipped (e.g. 6 times for a full set)
 
 ```js
-const attributeParsing = require('item-attribute-parsing')
+const attributeParsing = require('gw2e-item-attributes')
 
 let level = 80
 // The profession as given from the API, one of Elementalist, Guardian, 
