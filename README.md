@@ -103,6 +103,23 @@ let attributes = attributeParsing.parseCharacter(level, profession, items)
 // }
 ```
 
+### Parsing attribute combination names
+
+This module includes a helper function `parseCombination` to easily distinct different
+attribute combination names (e.g. "Berserker"). If no name could be found it will return `false`.
+
+```js
+const attributeParsing = require('gw2e-item-attributes')
+
+let item = { /* item from the official API */ }
+
+let attributes = attributeParsing.parseItems(items)
+// -> {Power: 126, Precision: 85, Ferocity: 85}
+
+let name = attributeParsing.parseCombination(attributes)
+// -> 'Berserker'
+```
+
 ## Tests
 
 ```
