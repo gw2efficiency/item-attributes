@@ -1,15 +1,15 @@
-const attributeCombinations = {
-  Berserker: [['Power'], ['Precision', 'Ferocity']],
-  Assassin: [['Precision'], ['Power', 'Ferocity']],
-  Celestial: [['Power', 'Precision'], []]
-}
+const combinations = [
+  {attributes: [['Power'], ['Precision', 'Ferocity']], text: 'Berserker'},
+  {attributes: [['Precision'], ['Power', 'Ferocity']], text: 'Assassin'},
+  {attributes: [['Power', 'Precision'], []], text: 'Celestial'}
+]
 
 function parseCombination (attributes) {
-  let normalizedAttributes = normalizeAttributes(attributes)
+  attributes = normalizeAttributes(attributes)
 
-  for (let key in attributeCombinations) {
-    if (equalAttributes(normalizedAttributes, attributeCombinations[key])) {
-      return key
+  for (let i = 0; i !== combinations.length; i++) {
+    if (equalAttributes(attributes, combinations[i].attributes)) {
+      return combinations[i].text
     }
   }
 
