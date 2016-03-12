@@ -24,9 +24,34 @@ describe('parsing attribute combination name', () => {
     expect(parse(attributes)).to.equal(false)
   })
 
-  it('parses the correct name for items with multiple main stats', () => {
-    expect(parse({Precision: 126, Power: 126}).prefix).to.equal('Celestial')
-    expect(parse({Power: 126, Precision: 126}).prefix).to.equal('Celestial')
+  it('parses the correct name for items with single stats', () => {
+    expect(parse({Power: 123}).prefix).to.equal('Mighty')
+  })
+
+  it('parses the correct name for items with quadruple stats', () => {
+    expect(parse({Power: 121, ConditionDamage: 121, Precision: 67, Expertise: 67}).prefix).to.equal("Viper's")
+  })
+
+  it('parses the correct name for items with septuple stats', () => {
+    expect(parse({
+      Power: 67,
+      Precision: 67,
+      Toughness: 67,
+      Vitality: 67,
+      ConditionDamage: 67,
+      HealingPower: 67,
+      Ferocity: 67
+    }).prefix).to.equal('Celestial')
+
+    expect(parse({
+      ConditionDamage: 67,
+      Power: 67,
+      Precision: 67,
+      Toughness: 67,
+      Vitality: 67,
+      HealingPower: 67,
+      Ferocity: 67
+    }).prefix).to.equal('Celestial')
   })
 
   it('includes all keys for all combinations', () => {
