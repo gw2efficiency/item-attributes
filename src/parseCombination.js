@@ -16,8 +16,7 @@ function parseCombination (attributes) {
   return false
 }
 
-// Get a representation showing the the main attribute and the
-// secondary attributes of an item.
+// Get a representation showing the the major and minor attributes of an item
 // {Precision: 85, Power: 126, Ferocity: 85}
 // -> [['Power'], ['Precision', 'Ferocity']]
 function normalizeAttributes (attributes) {
@@ -39,11 +38,11 @@ function normalizeAttributes (attributes) {
 
 // Deep compare two attribute arrays
 function equalAttributes (needle, haystack) {
-  return equalElements(needle[0], haystack[0]) && equalElements(needle[1], haystack[1])
+  return equalArrayElements(needle[0], haystack[0]) && equalArrayElements(needle[1], haystack[1])
 }
 
 // See if two arrays contain the same elements
-function equalElements (needle, haystack) {
+function equalArrayElements (needle, haystack) {
   let missingNeedle = needle.filter(n => haystack.indexOf(n) === -1)
   if (missingNeedle.length !== 0) {
     return false
