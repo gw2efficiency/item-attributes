@@ -1,8 +1,4 @@
-const combinations = [
-  {attributes: [['Power'], ['Precision', 'Ferocity']], text: 'Berserker'},
-  {attributes: [['Precision'], ['Power', 'Ferocity']], text: 'Assassin'},
-  {attributes: [['Power', 'Precision'], []], text: 'Celestial'}
-]
+const combinations = require('./staticCombinations.js')
 
 function parseCombination (attributes) {
   attributes = normalizeAttributes(attributes)
