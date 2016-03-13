@@ -120,6 +120,15 @@ let name = attributeParsing.parseCombination(attributes)
 // -> {prefix: "Assassin's", suffix: 'of the Assassin', trinket: 'Opal', ascended: ["Saphir's", "Soros's"]}
 ```
 
+You can also get the major and minor attributes out of the combination prefix:
+
+```js
+const attributeParsing = require('gw2e-item-attributes')
+
+let attributes = attributeParsing.combinationAttributes("Assassin's")
+// -> [['Precision'], ['Power', 'Ferocity']]
+```
+
 ## Tests
 
 ```
