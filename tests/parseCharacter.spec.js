@@ -2,7 +2,7 @@
 const expect = require('chai').expect
 const parse = require('../src/parseCharacter.js')
 
-describe('parsing character', () => {
+describe('parsing character attributes', () => {
   it('parses a completely empty character', () => {
     let attributes = parse(80, 'Elementalist', [])
 

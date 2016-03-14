@@ -3,7 +3,7 @@ const expect = require('chai').expect
 const parse = require('../src/parseCombination.js')
 const combinations = require('../src/staticCombinations.js')
 
-describe('parsing attribute combination name', () => {
+describe('parsing attribute combination names', () => {
   it('parses the name based on the main attribute', () => {
     expect(parse({Power: 126, Precision: 85, Ferocity: 85}).prefix).to.equal('Berserker\'s')
   })

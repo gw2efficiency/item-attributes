@@ -2,7 +2,7 @@
 const expect = require('chai').expect
 const scaling = require('../src/scaling.js')
 
-describe('scaling', () => {
+describe('character attribute scaling', () => {
   it('can calculate scaled base attributes', () => {
     expect(scaling.scaledBaseAttributes(1)).to.equal(37)
     expect(scaling.scaledBaseAttributes(68)).to.equal(739)
