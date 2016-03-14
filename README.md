@@ -1,7 +1,7 @@
-# gw2e-item-attributes
+# item-attributes
 
-[![Build Status](https://img.shields.io/travis/gw2efficiency/gw2e-item-attributes.svg?style=flat-square)](https://travis-ci.org/gw2efficiency/gw2e-item-attributes)
-[![Coverage Status](https://img.shields.io/codecov/c/github/gw2efficiency/gw2e-item-attributes/master.svg?style=flat-square)](https://codecov.io/github/gw2efficiency/gw2e-item-attributes)
+[![Build Status](https://img.shields.io/travis/gw2efficiency/item-attributes.svg?style=flat-square)](https://travis-ci.org/gw2efficiency/item-attributes)
+[![Coverage Status](https://img.shields.io/codecov/c/github/gw2efficiency/item-attributes/master.svg?style=flat-square)](https://codecov.io/github/gw2efficiency/item-attributes)
 
 > Parse attributes of items and characters from the official gw2 api
 

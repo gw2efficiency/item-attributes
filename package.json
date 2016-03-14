@@ -12,7 +12,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gw2efficiency/gw2e-item-attributes"
+    "url": "https://github.com/gw2efficiency/item-attributes"
   },
   "devDependencies": {
     "babel-cli": "^6.4.5",
