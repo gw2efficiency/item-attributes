@@ -24,6 +24,10 @@ describe('parsing attribute combination name', () => {
     expect(parse(attributes)).to.equal(false)
   })
 
+  it('discards invalid attributes (e.g. for old ascended items)', () => {
+    expect(parse({Power: 126, Precision: 85, Ferocity: 85, AgonyResistance: 5}).prefix).to.equal("Berserker's")
+  })
+
   it('parses the correct name for items with single stats', () => {
     expect(parse({Power: 123}).prefix).to.equal('Mighty')
   })
@@ -54,8 +58,12 @@ describe('parsing attribute combination name', () => {
     }).prefix).to.equal('Celestial')
   })
 
-  it('includes all keys for all combinations', () => {
+  it('includes all keys and valid attributes for all combinations', () => {
+    let validAttributes = ['Power', 'Toughness', 'Vitality', 'Precision', 'Ferocity', 'ConditionDamage', 'ConditionDuration', 'HealingPower', 'BoonDuration', 'Concentration', 'Expertise']
     for (let i = 0; i !== combinations.length; i++) {
+      let invalidAttributes = combinations[i].attributes[0].filter(x => validAttributes.indexOf(x) === -1).length +
+        combinations[i].attributes[1].filter(x => validAttributes.indexOf(x) === -1).length
+      expect(invalidAttributes, 'Invalid attributes for ' + combinations[i].text.prefix).to.equal(0)
       expect(Object.keys(combinations[i].text)).to.deep.equal(['prefix', 'suffix', 'trinket', 'ascended'])
     }
   })

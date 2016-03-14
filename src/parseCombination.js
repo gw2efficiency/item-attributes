@@ -1,4 +1,5 @@
 const combinations = require('./staticCombinations.js')
+const validAttributes = ['Power', 'Toughness', 'Vitality', 'Precision', 'Ferocity', 'ConditionDamage', 'ConditionDuration', 'HealingPower', 'BoonDuration', 'Concentration', 'Expertise']
 
 function parseCombination (attributes) {
   attributes = normalizeAttributes(attributes)
@@ -20,6 +21,10 @@ function normalizeAttributes (attributes) {
   let maxValue
 
   for (let key in attributes) {
+    if (validAttributes.indexOf(key) === -1) {
+      continue
+    }
+
     if (!maxValue || attributes[key] > maxValue) {
       maxValue = attributes[key]
       mainAttributes = [key]
@@ -28,7 +33,10 @@ function normalizeAttributes (attributes) {
     }
   }
 
-  let secondaryAttributes = Object.keys(attributes).filter(x => mainAttributes.indexOf(x) === -1)
+  let secondaryAttributes = Object.keys(attributes).filter(a =>
+    mainAttributes.indexOf(a) === -1 &&
+    validAttributes.indexOf(a) !== -1
+  )
   return [mainAttributes, secondaryAttributes]
 }
 
