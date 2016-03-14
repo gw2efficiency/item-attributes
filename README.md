@@ -103,10 +103,10 @@ let attributes = attributeParsing.parseCharacter(level, profession, items)
 // }
 ```
 
-### Parsing attribute combination names
+### Attribute combination names
 
 This module includes a helper function `parseCombination` to easily distinct different
-attribute combination names (e.g. "Berserker's"). If no name could be found it will return `false`.
+attribute combinations by name (e.g. "Berserker's"). If no name could be found it will return `false`.
 
 ```js
 const attributeParsing = require('gw2e-item-attributes')
@@ -116,11 +116,11 @@ let item = { /* item from the official API */ }
 let attributes = attributeParsing.parseItems(items)
 // -> {Power: 85, Precision: 126, Ferocity: 85}
 
-let name = attributeParsing.parseCombination(attributes)
+let text = attributeParsing.parseCombination(attributes)
 // -> {prefix: "Assassin's", suffix: 'of the Assassin', trinket: 'Opal', ascended: ["Saphir's", "Soros's"]}
 ```
 
-You can also get the major and minor attributes out of the combination prefix:
+You can also find out the major and minor attributes if you know the combination prefix:
 
 ```js
 const attributeParsing = require('gw2e-item-attributes')
