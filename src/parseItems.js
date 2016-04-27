@@ -47,8 +47,9 @@ function parseItem (item) {
     }
   }
 
-  // Legacy rings have agony infusion on them even if it has an agony infusion inserted
-  if (item.rarity === 'Ascended' && details.type === 'Ring') {
+  // Remove the resistance that some legacy items still have hardcoded in them.
+  // They also have the agony infusions giving the actual resistance
+  if (item.rarity === 'Ascended' && details.type !== 'Default') {
     delete attributes.AgonyResistance
   }
 
