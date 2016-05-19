@@ -479,4 +479,25 @@ describe('parsing items', () => {
 
     expect(parse(item)).to.deep.equal({Armor: 102, Toughness: 63, HealingPower: 45, Vitality: 45})
   })
+
+  it('can parse selectable stats', () => {
+    let item = {
+      id: 68357,
+      name: 'Rime-Rimmed Mariner\'s Rebreather',
+      stats: {
+        id: 1077,
+        attributes: {
+          Toughness: 63,
+          Healing: 45,
+          Vitality: 45
+        }
+      },
+      details: {
+        type: 'HelmAquatic',
+        defense: 73
+      }
+    }
+
+    expect(parse(item)).to.deep.equal({Armor: 73, Toughness: 63, HealingPower: 45, Vitality: 45})
+  })
 })

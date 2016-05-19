@@ -1,6 +1,18 @@
 const parseString = require('./parseString.js')
 const {mergeAttributes, normalizeAttributes} = require('./helpers.js')
 
+const officialAttributeMap = {
+  BoonDuration: 'Concentration',
+  ConditionDamage: 'ConditionDamage',
+  ConditionDuration: 'Expertise',
+  CritDamage: 'Ferocity',
+  Healing: 'HealingPower',
+  Power: 'Power',
+  Precision: 'Precision',
+  Toughness: 'Toughness',
+  Vitality: 'Vitality'
+}
+
 // Counts how many of each rune we have while parsing items
 let runeCount
 
@@ -31,7 +43,7 @@ function parseItem (item) {
 
   // Official attributes -> array of {attribute: 'type', modifier: value}
   if (details.infix_upgrade && details.infix_upgrade.attributes) {
-    attributes = mergeAttributes(attributes, convertOfficial(details.infix_upgrade.attributes))
+    attributes = mergeAttributes(attributes, convertOfficialArray(details.infix_upgrade.attributes))
   }
 
   // Buff description (condition duration, ascended items, infusions) -> string
@@ -47,6 +59,11 @@ function parseItem (item) {
     }
   }
 
+  // Selectable stats -> object of {type: value}
+  if (item.stats) {
+    attributes = mergeAttributes(attributes, convertOfficialMap(item.stats.attributes))
+  }
+
   // Remove the resistance that some legacy items still have hardcoded in them.
   // They also have the agony infusions giving the actual resistance
   if (item.rarity === 'Ascended' && details.type !== 'Default') {
@@ -56,26 +73,23 @@ function parseItem (item) {
   return attributes
 }
 
-// Map the official attribute keys to our representation that
-// makes it clearer which attribute is which
-const officialAttributeMap = {
-  BoonDuration: 'Concentration',
-  ConditionDamage: 'ConditionDamage',
-  ConditionDuration: 'Expertise',
-  CritDamage: 'Ferocity',
-  Healing: 'HealingPower',
-  Power: 'Power',
-  Precision: 'Precision',
-  Toughness: 'Toughness',
-  Vitality: 'Vitality'
-}
-
-function convertOfficial (attributes) {
+// Convert an array of {attribute: 'type', modifier: value} into a map
+function convertOfficialArray (attributes) {
   let map = {}
   attributes.map(attribute => {
     let key = officialAttributeMap[attribute.attribute]
     map[key] = attribute.modifier
   })
+  return map
+}
+
+// Convert a official map into correct attribute names
+function convertOfficialMap (attributes) {
+  let map = {}
+  for (let attribute in attributes) {
+    let key = officialAttributeMap[attribute]
+    map[key] = attributes[attribute]
+  }
   return map
 }
 
