@@ -1,6 +1,6 @@
 /* eslint-env node, mocha */
-const expect = require('chai').expect
-const parse = require('../src/parseItems.js')
+import {expect} from 'chai'
+import parseItems from '../src/parseItems.js'
 
 describe('parsing items', () => {
   it('ignores items without details', () => {
@@ -9,7 +9,7 @@ describe('parsing items', () => {
       name: 'Some item'
     }
 
-    expect(parse(item)).to.deep.equal({})
+    expect(parseItems(item)).to.deep.equal({})
   })
 
   it('ignores items with details that don\'t matter', () => {
@@ -19,7 +19,7 @@ describe('parsing items', () => {
       details: {}
     }
 
-    expect(parse(item)).to.deep.equal({})
+    expect(parseItems(item)).to.deep.equal({})
   })
 
   it('converts official attributes', () => {
@@ -43,7 +43,7 @@ describe('parsing items', () => {
       }
     }
 
-    expect(parse(item)).to.deep.equal({
+    expect(parseItems(item)).to.deep.equal({
       Concentration: 123,
       ConditionDamage: 123,
       Expertise: 123,
@@ -69,7 +69,7 @@ describe('parsing items', () => {
       }
     }
 
-    expect(parse(item)).to.deep.equal({Vitality: 171, Precision: 171, ConditionDuration: 0.2, BoonDuration: 0.15})
+    expect(parseItems(item)).to.deep.equal({Vitality: 171, Precision: 171, ConditionDuration: 0.2, BoonDuration: 0.15})
   })
 
   it('can parse weapons', () => {
@@ -106,7 +106,7 @@ describe('parsing items', () => {
       }
     }
 
-    expect(parse(item)).to.deep.equal({Power: 120, Precision: 85, Ferocity: 85})
+    expect(parseItems(item)).to.deep.equal({Power: 120, Precision: 85, Ferocity: 85})
   })
 
   it('can parse armor', () => {
@@ -140,7 +140,7 @@ describe('parsing items', () => {
       }
     }
 
-    expect(parse(item)).to.deep.equal({Armor: 363, Toughness: 134, HealingPower: 96, ConditionDamage: 96})
+    expect(parseItems(item)).to.deep.equal({Armor: 363, Toughness: 134, HealingPower: 96, ConditionDamage: 96})
   })
 
   it('can parse trinkets', () => {
@@ -174,7 +174,7 @@ describe('parsing items', () => {
       }
     }
 
-    expect(parse(item)).to.deep.equal({
+    expect(parseItems(item)).to.deep.equal({
       Power: 56,
       Precision: 56,
       Toughness: 56,
@@ -214,7 +214,7 @@ describe('parsing items', () => {
       }
     }
 
-    expect(parse(item)).to.deep.equal({
+    expect(parseItems(item)).to.deep.equal({
       Toughness: 157,
       Power: 108,
       Precision: 108
@@ -242,7 +242,7 @@ describe('parsing items', () => {
       }
     }
 
-    expect(parse(item)).to.deep.equal({Power: 126, Precision: 85, Ferocity: 85})
+    expect(parseItems(item)).to.deep.equal({Power: 126, Precision: 85, Ferocity: 85})
   })
 
   it('can parse backpacks', () => {
@@ -273,7 +273,7 @@ describe('parsing items', () => {
       }
     }
 
-    expect(parse(item)).to.deep.equal({Power: 26, Toughness: 19, Vitality: 19})
+    expect(parseItems(item)).to.deep.equal({Power: 26, Toughness: 19, Vitality: 19})
   })
 
   it('can parse gems', () => {
@@ -298,13 +298,14 @@ describe('parsing items', () => {
           buff: {
             skill_id: 32185,
             description: '+17 Condition Damage\n+17 Power\n+9 Expertise\n+9 Precision'
-          }, attributes: []
+          },
+          attributes: []
         },
         suffix: 'of Black Diamond'
       }
     }
 
-    expect(parse(item)).to.deep.equal({ConditionDamage: 17, Power: 17, Expertise: 9, Precision: 9})
+    expect(parseItems(item)).to.deep.equal({ConditionDamage: 17, Power: 17, Expertise: 9, Precision: 9})
   })
 
   it('can parse sigils', () => {
@@ -330,7 +331,7 @@ describe('parsing items', () => {
       }
     }
 
-    expect(parse(item)).to.deep.equal({ConditionDuration: 0.05})
+    expect(parseItems(item)).to.deep.equal({ConditionDuration: 0.05})
   })
 
   it('can parse runes', () => {
@@ -358,7 +359,7 @@ describe('parsing items', () => {
     }
 
     let runes = [item, item, item]
-    expect(parse(runes)).to.deep.equal({Power: 75, Toughness: 35})
+    expect(parseItems(runes)).to.deep.equal({Power: 75, Toughness: 35})
   })
 
   it('ignores runes over the limit', () => {
@@ -386,7 +387,7 @@ describe('parsing items', () => {
     }
 
     let runes = [item, item, item, item, item, item, item]
-    expect(parse(runes)).to.deep.equal({ConditionDamage: 10, Toughness: 14})
+    expect(parseItems(runes)).to.deep.equal({ConditionDamage: 10, Toughness: 14})
   })
 
   it('can parse agony infusions', () => {
@@ -412,7 +413,7 @@ describe('parsing items', () => {
       }
     }
 
-    expect(parse(item)).to.deep.equal({AgonyResistance: 7})
+    expect(parseItems(item)).to.deep.equal({AgonyResistance: 7})
   })
 
   it('can parse stat infusions', () => {
@@ -437,13 +438,14 @@ describe('parsing items', () => {
           buff: {
             skill_id: 19063,
             description: '+5 Power\n+1% Damage to Guards, Lords, and Supervisors'
-          }, attributes: []
+          },
+          attributes: []
         },
         suffix: ''
       }
     }
 
-    expect(parse(item)).to.deep.equal({Power: 5})
+    expect(parseItems(item)).to.deep.equal({Power: 5})
   })
 
   it('can parse aqua breathers', () => {
@@ -477,7 +479,7 @@ describe('parsing items', () => {
       }
     }
 
-    expect(parse(item)).to.deep.equal({Armor: 102, Toughness: 63, HealingPower: 45, Vitality: 45})
+    expect(parseItems(item)).to.deep.equal({Armor: 102, Toughness: 63, HealingPower: 45, Vitality: 45})
   })
 
   it('can parse selectable stats', () => {
@@ -498,6 +500,6 @@ describe('parsing items', () => {
       }
     }
 
-    expect(parse(item)).to.deep.equal({Armor: 73, Toughness: 63, HealingPower: 45, Vitality: 45})
+    expect(parseItems(item)).to.deep.equal({Armor: 73, Toughness: 63, HealingPower: 45, Vitality: 45})
   })
 })

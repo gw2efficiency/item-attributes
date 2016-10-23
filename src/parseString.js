@@ -27,7 +27,7 @@ for (let key in attributeStrings) {
 
 // Go through all the regular expressions matching the string
 // and build a (somewhat) sane object of attributes
-function parseString (string) {
+export default function parseString (string) {
   let attributes = {}
 
   for (let attribute in attributeExpressions) {
@@ -38,7 +38,10 @@ function parseString (string) {
     matches.map(match => {
       let value = parseInt(match[1], 10) || parseInt(match[2], 10) || false
       if (!value) return
-      modifiedAttributes.map(k => attributes[k] = (attributes[k] || 0) + value)
+
+      modifiedAttributes.map(k => {
+        attributes[k] = (attributes[k] || 0) + value
+      })
     })
   }
 
@@ -57,5 +60,3 @@ function matchAll (regex, string) {
 
   return matches
 }
-
-module.exports = parseString

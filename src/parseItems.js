@@ -1,5 +1,5 @@
-const parseString = require('./parseString.js')
-const {mergeAttributes, normalizeAttributes} = require('./helpers.js')
+import parseString from './parseString.js'
+import {mergeAttributes, normalizeAttributes} from './helpers.js'
 
 const officialAttributeMap = {
   BoonDuration: 'Concentration',
@@ -16,7 +16,7 @@ const officialAttributeMap = {
 // Counts how many of each rune we have while parsing items
 let runeCount
 
-function parseItems (items) {
+export default function parseItems (items) {
   let attributes = {}
   runeCount = {}
   items = [].concat(items)
@@ -92,5 +92,3 @@ function convertOfficialMap (attributes) {
   }
   return map
 }
-
-module.exports = parseItems

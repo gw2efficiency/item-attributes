@@ -1,15 +1,31 @@
-const parseItems = require('./parseItems.js')
-const {mergeAttributes} = require('./helpers.js')
-const {scaledBaseAttributes, scaledBaseHealth, scaledAttributeBonus} = require('./scaling.js')
+import parseItems from './parseItems.js'
+import {mergeAttributes} from './helpers.js'
+import {
+  scaledBaseAttributes,
+  scaledBaseHealth,
+  scaledAttributeBonus
+} from './scaling.js'
 
 const emptyAttributes = {
-  Power: 0, Toughness: 0, Vitality: 0, Precision: 0, Ferocity: 0,
-  Armor: 0, ConditionDamage: 0, ConditionDuration: 0, HealingPower: 0,
-  BoonDuration: 0, AgonyResistance: 0, Concentration: 0, Expertise: 0,
-  CritChance: 0, Health: 0, CritDamage: 0
+  Power: 0,
+  Toughness: 0,
+  Vitality: 0,
+  Precision: 0,
+  Ferocity: 0,
+  Armor: 0,
+  ConditionDamage: 0,
+  ConditionDuration: 0,
+  HealingPower: 0,
+  BoonDuration: 0,
+  AgonyResistance: 0,
+  Concentration: 0,
+  Expertise: 0,
+  CritChance: 0,
+  Health: 0,
+  CritDamage: 0
 }
 
-function parseCharacter (level, profession, items) {
+export default function parseCharacter (level, profession, items) {
   let attributes = parseItems(items)
 
   // Make sure all attributes exist
@@ -43,5 +59,3 @@ function parseCharacter (level, profession, items) {
 
   return attributes
 }
-
-module.exports = parseCharacter

@@ -1,6 +1,6 @@
 /* eslint-env node, mocha */
-const expect = require('chai').expect
-const index = require('../src/index.js')
+import {expect} from 'chai'
+import index from '../src/index.js'
 
 describe('module', () => {
   it('exports functions', () => {

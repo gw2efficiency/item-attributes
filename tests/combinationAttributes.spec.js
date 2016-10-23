@@ -1,6 +1,6 @@
 /* eslint-env node, mocha */
-const expect = require('chai').expect
-const resolve = require('../src/combinationAttributes.js')
+import {expect} from 'chai'
+import resolve from '../src/combinationAttributes.js'
 
 describe('resolving combination prefixes into attributes', () => {
   it('returns the major and minor attributes for a combination prefix', () => {

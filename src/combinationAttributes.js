@@ -1,6 +1,6 @@
-const combinations = require('./staticCombinations.js')
+import combinations from './static/combinations.js'
 
-function combinationAttributes (prefix) {
+export default function combinationAttributes (prefix) {
   for (let i = 0; i !== combinations.length; i++) {
     if (combinations[i].text.prefix === prefix) {
       return combinations[i].attributes
@@ -9,5 +9,3 @@ function combinationAttributes (prefix) {
 
   return false
 }
-
-module.exports = combinationAttributes

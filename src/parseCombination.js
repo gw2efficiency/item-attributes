@@ -1,7 +1,7 @@
-const combinations = require('./staticCombinations.js')
-const validAttributes = ['Power', 'Toughness', 'Vitality', 'Precision', 'Ferocity', 'ConditionDamage', 'ConditionDuration', 'HealingPower', 'BoonDuration', 'Concentration', 'Expertise']
+import combinations from './static/combinations.js'
+import validAttributes from './static/attributes.js'
 
-function parseCombination (attributes) {
+export default function parseCombination (attributes) {
   attributes = normalizeAttributes(attributes)
 
   for (let i = 0; i !== combinations.length; i++) {
@@ -55,5 +55,3 @@ function equalArrayElements (needle, haystack) {
   let missingHaystack = haystack.filter(h => needle.indexOf(h) === -1)
   return missingHaystack.length === 0
 }
-
-module.exports = parseCombination

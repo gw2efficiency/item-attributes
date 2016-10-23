@@ -10,7 +10,8 @@ const attributeGrowth = [
   0, 34, 0, 34, 0, 35, 0, 36, 0, 36,
   0, 44, 0, 44, 0, 45, 0, 46, 0, 46
 ]
-function scaledBaseAttributes (level) {
+
+export function scaledBaseAttributes (level) {
   let attributes = 37
 
   for (let i = 0; i !== level; i++) {
@@ -33,7 +34,8 @@ const baseHealthGrowth = {
   Warrior: [28, 70, 140, 210, 280],
   Necromancer: [28, 70, 140, 210, 280]
 }
-function scaledBaseHealth (level, profession) {
+
+export function scaledBaseHealth (level, profession) {
   let health = 0
 
   for (let i = 0; i !== level; i++) {
@@ -69,8 +71,7 @@ const scaledAttributeBonuses = {
     17.4, 17.8, 18.2, 18.6, 19.0, 19.4, 19.8, 20.2, 20.6, 21.0
   ]
 }
-function scaledAttributeBonus (level, maxLevelValue) {
+
+export function scaledAttributeBonus (level, maxLevelValue) {
   return scaledAttributeBonuses[maxLevelValue][level - 1]
 }
-
-module.exports = {scaledBaseAttributes, scaledBaseHealth, scaledAttributeBonus}

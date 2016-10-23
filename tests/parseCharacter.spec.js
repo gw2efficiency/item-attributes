@@ -1,10 +1,10 @@
 /* eslint-env node, mocha */
-const expect = require('chai').expect
-const parse = require('../src/parseCharacter.js')
+import {expect} from 'chai'
+import parseCharacter from '../src/parseCharacter.js'
 
 describe('parsing character attributes', () => {
   it('parses a completely empty character', () => {
-    let attributes = parse(80, 'Elementalist', [])
+    let attributes = parseCharacter(80, 'Elementalist', [])
 
     expect(attributes.Power).to.equal(1000)
     expect(attributes.Toughness).to.equal(1000)
@@ -92,7 +92,8 @@ describe('parsing character attributes', () => {
             buff: {
               skill_id: 9448,
               description: '50% Chance bei kritischen Treffern: Erzeugt einen Blitzschlag<br><c=@reminder>(Erholzeit: 3 s)</c>'
-            }, attributes: []
+            },
+            attributes: []
           },
           suffix: 'der Luft'
         }
@@ -480,7 +481,7 @@ describe('parsing character attributes', () => {
     ]
 
     let equipmentArray = equipment.map(e => items.find(i => i.id === e))
-    let attributes = parse(80, 'Revenant', equipmentArray)
+    let attributes = parseCharacter(80, 'Revenant', equipmentArray)
 
     expect(attributes.Power).to.equal(2494)
     expect(attributes.Toughness).to.equal(1000)
@@ -976,7 +977,7 @@ describe('parsing character attributes', () => {
     ]
 
     let equipmentArray = equipment.map(e => items.find(i => i.id === e))
-    let attributes = parse(80, 'Elementalist', equipmentArray)
+    let attributes = parseCharacter(80, 'Elementalist', equipmentArray)
 
     expect(attributes.Power).to.equal(2485)
     expect(attributes.Toughness).to.equal(1000)
@@ -1122,7 +1123,7 @@ describe('parsing character attributes', () => {
     let equipment = [6472, 6470, 6473, 21044, 33350]
 
     let equipmentArray = equipment.map(e => items.find(i => i.id === e))
-    let attributes = parse(4, 'Engineer', equipmentArray)
+    let attributes = parseCharacter(4, 'Engineer', equipmentArray)
 
     expect(attributes.Power).to.equal(60)
     expect(attributes.Toughness).to.equal(60)
@@ -1232,7 +1233,8 @@ describe('parsing character attributes', () => {
             buff: {
               skill_id: 9443,
               description: '50% Chance bei kritischen Treffern: Löst eine Flammenentladung mit Wirkungsbereichschaden aus (Radius: 240). <br><c=@reminder>(Erholzeit: 7 s)</c>'
-            }, attributes: []
+            },
+            attributes: []
           },
           suffix: 'des Feuers'
         }
@@ -1487,7 +1489,7 @@ describe('parsing character attributes', () => {
     ]
 
     let equipmentArray = equipment.map(e => items.find(i => i.id === e))
-    let attributes = parse(68, 'Guardian', equipmentArray)
+    let attributes = parseCharacter(68, 'Guardian', equipmentArray)
 
     expect(attributes.Power).to.equal(1217)
     expect(attributes.Toughness).to.equal(739)
@@ -1569,7 +1571,7 @@ describe('parsing character attributes', () => {
     let equipment = [76287, 77015]
 
     let equipmentArray = equipment.map(e => items.find(i => i.id === e))
-    let attributes = parse(80, 'Necromancer', equipmentArray)
+    let attributes = parseCharacter(80, 'Necromancer', equipmentArray)
 
     expect(attributes.Power).to.equal(1307)
     expect(attributes.Toughness).to.equal(1102)

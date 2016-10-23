@@ -1,5 +1,13 @@
-const parseItems = require('./parseItems.js')
-const parseCharacter = require('./parseCharacter.js')
-const combinationAttributes = require('./combinationAttributes.js')
+import _parseItems from './parseItems.js'
+import _parseCharacter from './parseCharacter.js'
+import _combinationAttributes from './combinationAttributes.js'
 
-module.exports = {parseItems, parseCharacter, combinationAttributes}
+export default {
+  parseItems: _parseItems,
+  parseCharacter: _parseCharacter,
+  combinationAttributes: _combinationAttributes
+}
+
+export const parseItems = _parseItems
+export const parseCharacter = _parseCharacter
+export const combinationAttributes = _combinationAttributes

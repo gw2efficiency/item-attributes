@@ -1,6 +1,6 @@
 /* eslint-env node, mocha */
-const expect = require('chai').expect
-const parseString = require('../src/parseString.js')
+import {expect} from 'chai'
+import parseString from '../src/parseString.js'
 
 describe('parsing attributes from strings', () => {
   let expectedAttributes = {

@@ -1,6 +1,6 @@
 /* eslint-env node, mocha */
-const expect = require('chai').expect
-const scaling = require('../src/scaling.js')
+import {expect} from 'chai'
+import * as scaling from '../src/scaling.js'
 
 describe('character attribute scaling', () => {
   it('can calculate scaled base attributes', () => {
