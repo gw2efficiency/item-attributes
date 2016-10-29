@@ -1,6 +1,6 @@
 {
   "name": "gw2e-item-attributes",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Parse attributes of items and characters from the official gw2 api",
   "main": "./build/index.js",
   "scripts": {
