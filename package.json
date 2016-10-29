@@ -4,9 +4,9 @@
   "description": "Parse attributes of items and characters from the official gw2 api",
   "main": "./build/index.js",
   "scripts": {
-    "prepublish": "abc build",
     "build": "abc build",
-    "test": "abc test && abc lint"
+    "test": "abc test && abc lint",
+    "version": "abc build"
   },
   "author": "queicherius@gmail.com",
   "license": "MIT",
