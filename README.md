@@ -39,7 +39,7 @@ The following attributes **can** be included in the object:
 - `Expertise`
 
 ```js
-const attributeParsing = require('gw2e-item-attributes')
+import {parseItems} from 'gw2e-item-attributes'
 
 let items = [
   {
@@ -56,7 +56,7 @@ let items = [
   // ...
 ]
 
-let attributes = attributeParsing.parseItems(items)
+let attributes = parseItems(items)
 // -> {Vitality: 171, Precision: 171, ConditionDuration: 0.2}
 ```
 
@@ -76,7 +76,7 @@ Make sure that you pass in **all** equipped items of the character, including in
 For runes, pass in the rune as many times as it is equipped (e.g. 6 times for a full set)
 
 ```js
-const attributeParsing = require('gw2e-item-attributes')
+import {parseCharacter} from 'gw2e-item-attributes'
 
 let level = 80
 // The profession as given from the API, one of Elementalist, Guardian, 
@@ -84,7 +84,7 @@ let level = 80
 let profession = 'Elementalist'
 let items = [/* ... */]
 
-let attributes = attributeParsing.parseCharacter(level, profession, items)
+let attributes = parseCharacter(level, profession, items)
 // {
 //   Power: 123,
 //   Toughness: 123,
@@ -111,23 +111,23 @@ This module includes a helper function `parseCombination` to easily distinct dif
 attribute combinations by name (e.g. "Berserker's"). If no name could be found it will return `false`.
 
 ```js
-const attributeParsing = require('gw2e-item-attributes')
+import {parseCombination} from 'gw2e-item-attributes'
 
 let item = { /* item from the official API */ }
 
 let attributes = attributeParsing.parseItems(items)
 // -> {Power: 85, Precision: 126, Ferocity: 85}
 
-let text = attributeParsing.parseCombination(attributes)
+let text = parseCombination(attributes)
 // -> {prefix: "Assassin's", suffix: 'of the Assassin', trinket: 'Opal', ascended: ["Saphir's", "Soros's"]}
 ```
 
 You can also find out the major and minor attributes if you know the combination prefix:
 
 ```js
-const attributeParsing = require('gw2e-item-attributes')
+import {combinationAttributes} from 'gw2e-item-attributes'
 
-let attributes = attributeParsing.combinationAttributes("Assassin's")
+let attributes = combinationAttributes("Assassin's")
 // -> [['Precision'], ['Power', 'Ferocity']]
 ```
 
