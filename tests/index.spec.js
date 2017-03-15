@@ -4,8 +4,8 @@ import index from '../src/index.js'
 
 describe('module', () => {
   it('exports functions', () => {
-    expect(index.parseItems).to.be.a.function
-    expect(index.parseCharacter).to.be.a.function
-    expect(index.combinationAttributes).to.be.a.function
+    expect(typeof index.parseItems).to.equal('function')
+    expect(typeof index.parseCharacter).to.equal('function')
+    expect(typeof index.combinationAttributes).to.equal('function')
   })
 })
