@@ -30,11 +30,12 @@ export default function parseItems (items) {
 
 function parseItem (item) {
   let attributes = {}
-  let details = item.details
 
-  if (!details) {
+  if (!item || !item.details) {
     return attributes
   }
+
+  let details = item.details
 
   // Armor rating -> integer
   if (details.defense) {

@@ -43,7 +43,7 @@ describe('parsing items', () => {
       }
     }
 
-    expect(parseItems(item)).to.deep.equal({
+    expect(parseItems([item, null, undefined])).to.deep.equal({
       Concentration: 123,
       ConditionDamage: 123,
       Expertise: 123,
