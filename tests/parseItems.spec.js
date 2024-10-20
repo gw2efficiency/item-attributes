@@ -408,7 +408,7 @@ describe('parsing items', () => {
         type: 'Default',
         flags: ['Trinket'],
         infusion_upgrade_flags: ['Agony'],
-        infix_upgrade: {buff: {skill_id: 22106, description: '+7 Agony Resistance'}, attributes: []},
+        infix_upgrade: {buff: {skill_id: 22106, description: '+7 Agony Resistance'}, attributes: [{attribute: "AgonyResistance", modifier: 7}]},
         suffix: ''
       }
     }
