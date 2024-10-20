@@ -49,11 +49,7 @@ function parseItem (item) {
 
   // Buff description (condition duration, ascended items, infusions) -> string
   if (details.infix_upgrade && details.infix_upgrade.buff) {
-    if (item.description.includes("apply to an unused infusion slot.")) {
-      const agonyMatch = details.infix_upgrade.buff.description.match(/(\+\d+ Agony Resistance)/)
-      details.infix_upgrade.buff.description = agonyMatch ? agonyMatch[0] : ""
-    }
-    attributes = mergeAttributes(attributes, parseString(details.infix_upgrade.buff.description))
+    attributes = mergeAttributes(attributes, parseString(details.infix_upgrade.buff.description, item.id))
   }
 
   // Rune buffs -> array of 6 strings, 1 per equipped rune count

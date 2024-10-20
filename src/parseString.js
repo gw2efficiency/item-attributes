@@ -1,3 +1,7 @@
+import GAME_DATA_ITEMS_CATEGORIES_STAT_INFUSIONS from '@gw2efficiency/game-data/items/categories/stat-infusions'
+
+const statInfusionIds = GAME_DATA_ITEMS_CATEGORIES_STAT_INFUSIONS.map((x) => x.id)
+
 const attributeStrings = {
   Power: ['Power', 'Kraft', 'Puissance', 'Potencia'],
   Toughness: ['Toughness', 'Zähigkeit', 'Robustesse', 'Dureza'],
@@ -27,10 +31,13 @@ for (let key in attributeStrings) {
 
 // Go through all the regular expressions matching the string
 // and build a (somewhat) sane object of attributes
-export default function parseString (string) {
+export default function parseString (string, id) {
+  let agonyResistanceExpressions = {
+    AgonyResistance: attributeExpressions.AgonyResistance
+  }
   let attributes = {}
 
-  for (let attribute in attributeExpressions) {
+  for (let attribute in (statInfusionIds.includes(id) ? agonyResistanceExpressions : attributeExpressions)) {
     let matches = matchAll(attributeExpressions[attribute], string)
     let modifiedAttributes = (attribute !== '__AllStats__') ? [attribute] : allStatsAttributes
 
