@@ -10,7 +10,8 @@ const officialAttributeMap = {
   Power: 'Power',
   Precision: 'Precision',
   Toughness: 'Toughness',
-  Vitality: 'Vitality'
+  Vitality: 'Vitality',
+  AgonyResistance: 'AgonyResistance'
 }
 
 // Counts how many of each rune we have while parsing items
@@ -49,7 +50,7 @@ function parseItem (item) {
 
   // Buff description (condition duration, ascended items, infusions) -> string
   if (details.infix_upgrade && details.infix_upgrade.buff) {
-    attributes = mergeAttributes(attributes, parseString(details.infix_upgrade.buff.description, item.id))
+    attributes = mergeAttributes(attributes, parseString(details.infix_upgrade.buff.description, details.infix_upgrade.attributes))
   }
 
   // Rune buffs -> array of 6 strings, 1 per equipped rune count
