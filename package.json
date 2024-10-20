@@ -16,5 +16,8 @@
   },
   "devDependencies": {
     "abc-environment": "^2.0.0"
+  },
+  "dependencies": {
+    "@gw2efficiency/game-data": "^0.1.50"
   }
 }
