@@ -439,7 +439,11 @@ describe('parsing items', () => {
             skill_id: 19063,
             description: '+5 Power\n+1% Damage to Guards, Lords, and Supervisors'
           },
-          attributes: []
+          attributes: [
+            {
+              attribute: 'Power', modifier: 5
+            }
+          ]
         },
         suffix: ''
       }
