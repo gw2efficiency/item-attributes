@@ -68,7 +68,7 @@ describe('parsing character attributes', () => {
           type: 'Default',
           flags: ['ShortBow', 'HeavyArmor', 'LightArmor', 'Dagger', 'MediumArmor', 'Focus', 'Greatsword', 'Hammer', 'Trinket', 'Harpoon', 'Mace', 'Pistol', 'Rifle', 'Scepter', 'Shield', 'Speargun', 'Axe', 'Staff', 'Sword', 'Torch', 'Trident', 'Warhorn', 'LongBow'],
           infusion_upgrade_flags: ['Utility', 'Defense', 'Offense'],
-          infix_upgrade: {buff: {skill_id: 22106, description: '+7 Qual-Widerstand'}, attributes: []},
+          infix_upgrade: {buff: {skill_id: 22106, description: '+7 Qual-Widerstand'}, attributes: [{attribute: 'AgonyResistance', modifier: 7}]},
           suffix: ''
         }
       }, {
@@ -180,7 +180,7 @@ describe('parsing character attributes', () => {
           type: 'Default',
           flags: ['Trinket'],
           infusion_upgrade_flags: ['Agony'],
-          infix_upgrade: {buff: {skill_id: 22104, description: '+5 Qual-Widerstand'}, attributes: []},
+          infix_upgrade: {buff: {skill_id: 22104, description: '+5 Qual-Widerstand'}, attributes: [{attribute: 'AgonyResistance', modifier: 5}]},
           suffix: ''
         }
       }, {
@@ -278,7 +278,7 @@ describe('parsing character attributes', () => {
           type: 'Default',
           flags: ['ShortBow', 'HeavyArmor', 'LightArmor', 'Dagger', 'MediumArmor', 'Focus', 'Greatsword', 'Hammer', 'Trinket', 'Harpoon', 'Mace', 'Pistol', 'Rifle', 'Scepter', 'Shield', 'Speargun', 'Axe', 'Staff', 'Sword', 'Torch', 'Trident', 'Warhorn', 'LongBow'],
           infusion_upgrade_flags: ['Defense'],
-          infix_upgrade: {buff: {skill_id: 15760, description: '+5 Qual-Widerstand'}, attributes: []},
+          infix_upgrade: {buff: {skill_id: 15760, description: '+5 Qual-Widerstand'}, attributes: [{attribute: 'AgonyResistance', modifier: 5}]},
           suffix: ''
         }
       }, {
@@ -668,7 +668,7 @@ describe('parsing character attributes', () => {
           type: 'Default',
           flags: ['Trinket'],
           infusion_upgrade_flags: ['Agony'],
-          infix_upgrade: {buff: {skill_id: 22109, description: '+10 Qual-Widerstand'}, attributes: []},
+          infix_upgrade: {buff: {skill_id: 22109, description: '+10 Qual-Widerstand'}, attributes: [{attribute: 'AgonyResistance', modifier: 10}]},
           suffix: ''
         }
       },
@@ -741,7 +741,7 @@ describe('parsing character attributes', () => {
           type: 'Default',
           flags: ['ShortBow', 'HeavyArmor', 'LightArmor', 'Dagger', 'MediumArmor', 'Focus', 'Greatsword', 'Hammer', 'Trinket', 'Harpoon', 'Mace', 'Pistol', 'Rifle', 'Scepter', 'Shield', 'Speargun', 'Axe', 'Staff', 'Sword', 'Torch', 'Trident', 'Warhorn', 'LongBow'],
           infusion_upgrade_flags: ['Utility', 'Defense', 'Offense'],
-          infix_upgrade: {buff: {skill_id: 22106, description: '+7 Qual-Widerstand'}, attributes: []},
+          infix_upgrade: {buff: {skill_id: 22106, description: '+7 Qual-Widerstand'}, attributes: [{attribute: 'AgonyResistance', modifier: 7}]},
           suffix: ''
         }
       },

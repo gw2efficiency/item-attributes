@@ -408,7 +408,7 @@ describe('parsing items', () => {
         type: 'Default',
         flags: ['Trinket'],
         infusion_upgrade_flags: ['Agony'],
-        infix_upgrade: {buff: {skill_id: 22106, description: '+7 Agony Resistance'}, attributes: []},
+        infix_upgrade: {buff: {skill_id: 22106, description: '+7 Agony Resistance'}, attributes: [{attribute: 'AgonyResistance', modifier: 7}]},
         suffix: ''
       }
     }
@@ -439,7 +439,11 @@ describe('parsing items', () => {
             skill_id: 19063,
             description: '+5 Power\n+1% Damage to Guards, Lords, and Supervisors'
           },
-          attributes: []
+          attributes: [
+            {
+              attribute: 'Power', modifier: 5
+            }
+          ]
         },
         suffix: ''
       }
@@ -501,5 +505,203 @@ describe('parsing items', () => {
     }
 
     expect(parseItems(item)).to.deep.equal({Armor: 73, Toughness: 63, HealingPower: 45, Vitality: 45})
+  })
+
+  it('can parse all infusions without doubling stats (multi-languge)', () => {
+    let items = [
+      {
+        name: '+9 Qual-Infusion',
+        description: 'Doppelklicken, um auf einen freien Infusionsplatz anzuwenden. Wird von Konstrukteuren zur Herstellung stärkerer Qual-Infusionen verwendet.',
+        type: 'UpgradeComponent',
+        level: 0,
+        rarity: 'Ascended',
+        vendor_value: 330,
+        game_types: ['Activity', 'Wvw', 'Dungeon', 'Pve'],
+        flags: ['NoMysticForge', 'NoSalvage', 'NoSell'],
+        restrictions: [],
+        id: 49432,
+        chat_link: '[&AgEYwQAA]',
+        icon: 'https://render.guildwars2.com/file/0C06583A5CC59D4974101F5C0EAFAE7E0C6B5CE7/1465585.png',
+        details: {
+          type: 'Default',
+          flags: [
+            'ShortBow',
+            'HeavyArmor',
+            'LightArmor',
+            'Dagger',
+            'MediumArmor',
+            'Focus',
+            'Greatsword',
+            'Hammer',
+            'Trinket',
+            'Harpoon',
+            'Mace',
+            'Pistol',
+            'Rifle',
+            'Scepter',
+            'Shield',
+            'Speargun',
+            'Axe',
+            'Staff',
+            'Sword',
+            'Torch',
+            'Trident',
+            'Warhorn',
+            'LongBow'
+          ],
+          infusion_upgrade_flags: ['Infusion'],
+          attribute_adjustment: 0,
+          infix_upgrade: {
+            id: 772,
+            buff: {
+              skill_id: 22108,
+              description: '+9 Qual-Widerstand'
+            },
+            attributes: [
+              {
+                attribute: 'AgonyResistance',
+                modifier: 9
+              }
+            ]
+          },
+          suffix: ''
+        }
+      },
+      {
+        name: 'Ghostly Infusion',
+        description: 'Double-click to apply to an unused infusion slot. Infuses armor with a spiritual aura.',
+        type: 'UpgradeComponent',
+        level: 0,
+        rarity: 'Exotic',
+        vendor_value: 32,
+        game_types: ['Activity', 'Wvw', 'Dungeon', 'Pve'],
+        flags: ['NoSalvage', 'NoSell', 'DeleteWarning'],
+        restrictions: [],
+        id: 77310,
+        chat_link: '[&AgH+LQEA]',
+        icon: 'https://render.guildwars2.com/file/297E4B766AFB54E8FBA14A1970A495EAA558F630/1302736.png',
+        details: {
+          type: 'Default',
+          flags: [
+            'ShortBow',
+            'HeavyArmor',
+            'LightArmor',
+            'Dagger',
+            'MediumArmor',
+            'Focus',
+            'Greatsword',
+            'Hammer',
+            'Trinket',
+            'Harpoon',
+            'Mace',
+            'Pistol',
+            'Rifle',
+            'Scepter',
+            'Shield',
+            'Speargun',
+            'Axe',
+            'Staff',
+            'Sword',
+            'Torch',
+            'Trident',
+            'Warhorn',
+            'LongBow'
+          ],
+          infusion_upgrade_flags: ['Infusion'],
+          attribute_adjustment: 0,
+          infix_upgrade: {
+            id: 1171,
+            buff: {
+              skill_id: 34111,
+              description: '+5 Power\n+9 Agony Resistance'
+            },
+            attributes: [
+              {
+                attribute: 'Power',
+                modifier: 5
+              },
+              {
+                attribute: 'AgonyResistance',
+                modifier: 9
+              }
+            ]
+          },
+          suffix: ''
+        }
+      },
+      {
+        name: 'Infusion McM puissante',
+        description: 'Double-cliquez pour appliquer à un emplacement d\'infusion inutilisé.',
+        type: 'UpgradeComponent',
+        level: 0,
+        rarity: 'Fine',
+        vendor_value: 8,
+        game_types: [
+          'Activity',
+          'Wvw',
+          'Dungeon',
+          'Pve'
+        ],
+        flags: [
+          'AccountBound',
+          'NoMysticForge',
+          'NoSalvage',
+          'NoSell',
+          'AccountBindOnUse'
+        ],
+        restrictions: [],
+        id: 43254,
+        chat_link: '[&AgH2qAAA]',
+        icon: 'https://render.guildwars2.com/file/F1B068BFD7E6AC11ED90FE09CAB916F6D4DC2C63/587075.png',
+        details: {
+          type: 'Default',
+          flags: [
+            'ShortBow',
+            'HeavyArmor',
+            'LightArmor',
+            'Dagger',
+            'MediumArmor',
+            'Focus',
+            'Greatsword',
+            'Hammer',
+            'Trinket',
+            'Harpoon',
+            'Mace',
+            'Pistol',
+            'Rifle',
+            'Scepter',
+            'Shield',
+            'Speargun',
+            'Axe',
+            'Staff',
+            'Sword',
+            'Torch',
+            'Trident',
+            'Warhorn',
+            'LongBow'
+          ],
+          infusion_upgrade_flags: [
+            'Infusion'
+          ],
+          attribute_adjustment: 0,
+          infix_upgrade: {
+            id: 706,
+            buff: {
+              skill_id: 19063,
+              description: 'Puissance +5 \nDégâts supplémentaires aux gardes, aux seigneurs et aux superviseurs 1%'
+            },
+            attributes: [
+              {
+                attribute: 'Power',
+                modifier: 5
+              }
+            ]
+          },
+          suffix: '((418987))'
+        }
+      }
+    ]
+
+    expect(parseItems(items)).to.deep.equal({AgonyResistance: 18, Power: 10})
   })
 })

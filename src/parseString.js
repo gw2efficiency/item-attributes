@@ -27,8 +27,10 @@ for (let key in attributeStrings) {
 
 // Go through all the regular expressions matching the string
 // and build a (somewhat) sane object of attributes
-export default function parseString (string) {
+export default function parseString (string, attributesArray) {
   let attributes = {}
+  const attributesStringArray =
+    attributesArray && attributesArray.length > 0 ? attributesArray.map((item) => `+${item.modifier} ${item.attribute}`) : []
 
   for (let attribute in attributeExpressions) {
     let matches = matchAll(attributeExpressions[attribute], string)
@@ -40,6 +42,7 @@ export default function parseString (string) {
       if (!value) return
 
       modifiedAttributes.map(k => {
+        if (attributesStringArray.includes(`+${value} ${k}`)) return
         attributes[k] = (attributes[k] || 0) + value
       })
     })
